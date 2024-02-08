@@ -1,0 +1,52 @@
+server:
+  port: 8003
+  
+spring:
+  application:
+    name: API_GATEWAY
+  
+  cloud:
+    gateway:
+      routes:
+      
+      - id: BOOKING-SERVICE
+        uri: lb://BOOKING-SERVICE
+        predicates:
+        - Path=/booking/**
+     
+      - id: USER-AUTHENTICATION-SERVICE
+        uri: lb://USER-AUTHENTICATION-SERVICE
+        predicates:
+        - Path=/userauthentication/**
+       
+      - id: USER-SERVICE
+        uri: lb://USER-SERVICE
+        predicates:
+        - Path=/user/**  
+      
+      - id: EVENT-SERVICE
+        uri: lb://EVENT-SERVICE
+        predicates:
+        - Path=/event/**
+      
+      - id: ADMIN_DASHBOARD-SERVICE
+        uri: lb://ADMIN_DASHBOARD-SERVICE
+        predicates:
+        - Path=/admin/**
+      
+      - id: EMAIL-SERVICE
+        uri: lb://EMAIL-SERVICE
+        predicates:
+        - Path=/email/**
+          
+      - id: CATEGORY-SERVICE
+        uri: lb://CATEGORY-SERVICE
+        predicates:
+        - Path=/category/**
+     
+      - id: PRODUCT-SERVICE
+        uri: lb://PRODUCT-SERVICE
+        predicates:
+        - Path=/products/**
+         
+          
